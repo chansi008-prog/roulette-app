@@ -280,6 +280,8 @@
   .toggles { display: flex; flex-wrap: wrap; gap: 10px 20px; }
   .log { width: 100%; display: grid; gap: 8px; }
   .log h3 { margin: 0; font: 400 19px var(--display); color: var(--ink-soft); }
+  .log-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .btn.small { padding: 4px 12px; font-size: 15px; }
   .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
   .btn {
     border: 1px solid var(--line); background: var(--panel); color: var(--ink);
@@ -354,7 +356,10 @@
       <div class="remain" id="remain"></div>
       <p class="hold-hint">버튼을 <b>길게 누를수록</b> 더 세게, 더 오래 돌아요</p>
       <div class="log">
-        <h3>지금까지 나온 결과</h3>
+        <div class="log-head">
+          <h3>지금까지 나온 결과</h3>
+          <button class="btn small" id="clear-history" type="button" hidden>지우기</button>
+        </div>
         <ol class="history" id="history"></ol>
         <p class="empty" id="history-empty">아직 돌리지 않았어요.</p>
       </div>
@@ -811,6 +816,7 @@ function renderHistory() {
     $("history").appendChild(li);
   });
   $("history-empty").hidden = history.length > 0;
+  $("clear-history").hidden = history.length === 0;
 }
 
 function hintText() {
@@ -921,6 +927,7 @@ $("people-minus").addEventListener("click", () => setPeople(allItems.length - 1)
 $("people-plus").addEventListener("click", () => setPeople(allItems.length + 1));
 $("people-count").addEventListener("change", e => setPeople(e.target.value));
 
+$("clear-history").addEventListener("click", () => { history.length = 0; renderHistory(); });
 $("refill").addEventListener("click", () => { if (!spinning) { removed.clear(); rotation = 0; refresh(); } });
 
 // ---------- option switches ----------
