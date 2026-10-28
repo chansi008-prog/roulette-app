@@ -1,0 +1,17 @@
+{
+  "name": "두근두근 룰렛",
+  "short_name": "두근두근 룰렛",
+  "description": "정산·벌칙·토크·마니또·운세 룰렛을 고르거나 직접 만들어 돌리는 모임용 룰렛",
+  "lang": "ko",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#FFF8E7",
+  "theme_color": "#FFF8E7",
+  "icons": [
+    {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}

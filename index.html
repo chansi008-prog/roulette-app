@@ -1,0 +1,1034 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>두근두근 룰렛</title>
+<meta name="description" content="정산·벌칙·토크·마니또·운세 룰렛을 고르거나 직접 만들어 돌리는 모임용 룰렛">
+<meta name="theme-color" content="#FFF8E7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="두근두근 룰렛">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap">
+<style>
+  /* 색 테마: 레몬 & 코랄 (기본) */
+  :root {
+    color-scheme: light;
+    --ground: #FFF8E7;
+    --glow: #FFE9A8;
+    --ground-2: #FFFFFF;
+    --panel: #FFF1D6;
+    --field: #FFFBF2;
+    --line: #F0DDB8;
+    --ink: #2D2A4A;
+    --ink-soft: #6E6A8A;
+    --accent: #FF6B5B;
+    --on-accent: #FFFFFF;
+    --accent-2: #FFC933;
+    --rim: #FF6B5B;
+    --wedge-line: #FFFFFF;
+    --stud: #FFF3C4;
+    --hub-bg: #FFFFFF;
+    --hub-ink: #FF6B5B;
+    --scrim: rgba(45, 42, 74, .45);
+    --display: "Gamja Flower", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    --body: "Gamja Flower", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  }
+  /* 하늘 & 레몬 */
+  :root[data-skin="sky"] {
+    --ground: #EAF6FF;
+    --glow: #CFEAFF;
+    --ground-2: #FFFFFF;
+    --panel: #DDEFFC;
+    --field: #F5FBFF;
+    --line: #C3DDF2;
+    --ink: #1F3A5F;
+    --ink-soft: #5A7593;
+    --accent: #2F8FE0;
+    --on-accent: #FFFFFF;
+    --accent-2: #FFC933;
+    --rim: #FFC933;
+    --wedge-line: #FFFFFF;
+    --stud: #FFFFFF;
+    --hub-bg: #FFFFFF;
+    --hub-ink: #2F8FE0;
+    --scrim: rgba(31, 58, 95, .45);
+  }
+  /* 크리스마스 파티 */
+  :root[data-skin="xmas"] {
+    --ground: #FFFDF8;
+    --glow: #FCE3E1;
+    --ground-2: #FFFFFF;
+    --panel: #FBEFEA;
+    --field: #FFFDF8;
+    --line: #EED9CF;
+    --ink: #1E4D3A;
+    --ink-soft: #5F7A6C;
+    --accent: #D7322E;
+    --on-accent: #FFFFFF;
+    --accent-2: #2E8B57;
+    --rim: #2E8B57;
+    --wedge-line: #FFFFFF;
+    --stud: #F2C14E;
+    --hub-bg: #FFFFFF;
+    --hub-ink: #D7322E;
+    --scrim: rgba(30, 77, 58, .45);
+  }
+  /* 딸기우유 */
+  :root[data-skin="berry"] {
+    --ground: #FFF0F4;
+    --glow: #FFD3E0;
+    --ground-2: #FFFFFF;
+    --panel: #FFE3EB;
+    --field: #FFF8FA;
+    --line: #F6C9D6;
+    --ink: #5A2340;
+    --ink-soft: #93607A;
+    --accent: #F0567F;
+    --on-accent: #FFFFFF;
+    --accent-2: #FFB3C7;
+    --rim: #F0567F;
+    --wedge-line: #FFFFFF;
+    --stud: #FFFFFF;
+    --hub-bg: #FFFFFF;
+    --hub-ink: #F0567F;
+    --scrim: rgba(90, 35, 64, .45);
+  }
+  /* 민트초코 */
+  :root[data-skin="mint"] {
+    --ground: #EAFBF4;
+    --glow: #C7F1E0;
+    --ground-2: #FFFFFF;
+    --panel: #D9F5EA;
+    --field: #F5FDF9;
+    --line: #B9E6D3;
+    --ink: #4A2F27;
+    --ink-soft: #7D665D;
+    --accent: #3BB98F;
+    --on-accent: #FFFFFF;
+    --accent-2: #7A4E3A;
+    --rim: #6B4334;
+    --wedge-line: #FFFFFF;
+    --stud: #C7F1E0;
+    --hub-bg: #FFFFFF;
+    --hub-ink: #3BB98F;
+    --scrim: rgba(74, 47, 39, .45);
+  }
+  /* 귤 */
+  :root[data-skin="tangerine"] {
+    --ground: #FFF4E6;
+    --glow: #FFD9A8;
+    --ground-2: #FFFFFF;
+    --panel: #FFE8CC;
+    --field: #FFFAF3;
+    --line: #F5D3A6;
+    --ink: #4A3220;
+    --ink-soft: #86684F;
+    --accent: #FF8A1F;
+    --on-accent: #FFFFFF;
+    --accent-2: #5DB85B;
+    --rim: #FF8A1F;
+    --wedge-line: #FFFFFF;
+    --stud: #FFF0D6;
+    --hub-bg: #FFFFFF;
+    --hub-ink: #FF8A1F;
+    --scrim: rgba(74, 50, 32, .45);
+  }
+  /* 밤하늘 */
+  :root[data-skin="night"] {
+    color-scheme: dark;
+    --ground: #14213D;
+    --glow: #24365E;
+    --ground-2: #1C2D50;
+    --panel: #253A63;
+    --field: #101A31;
+    --line: #34497A;
+    --ink: #F3F1E8;
+    --ink-soft: #AEB8D0;
+    --accent: #FFC94D;
+    --on-accent: #14213D;
+    --accent-2: #7FD3FF;
+    --rim: #FFC94D;
+    --wedge-line: #14213D;
+    --stud: #FFF3C4;
+    --hub-bg: #14213D;
+    --hub-ink: #FFC94D;
+    --scrim: rgba(5, 10, 25, .6);
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html, body { min-height: 100%; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(1200px 600px at 50% -10%, var(--glow) 0%, transparent 60%),
+      var(--ground);
+    color: var(--ink);
+    font: 18px/1.5 var(--body);
+    padding-inline: 16px;
+    padding-block: calc(20px + env(safe-area-inset-top, 0px)) calc(48px + env(safe-area-inset-bottom, 0px));
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; display: grid; gap: 28px; }
+
+  header { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 14px; }
+  .skin-bar { display: grid; gap: 10px; padding-top: 6px; border-top: 1px dashed var(--line); padding-block: 18px 0; }
+  .skins { display: flex; flex-wrap: wrap; gap: 10px; }
+  .skin {
+    display: flex; flex-direction: column; align-items: center; gap: 4px; width: 72px; padding: 6px 2px;
+    background: transparent; border: 0; border-radius: 12px; cursor: pointer;
+    font: 15px var(--body); color: var(--ink-soft);
+  }
+  .skin .sw { display: flex; width: 44px; height: 44px; padding: 4px; border-radius: 50%; overflow: hidden; background: var(--ground-2); border: 2px solid var(--line); }
+  .skin .sw i { flex: 1; display: block; }
+  .skin .sw i:first-child { border-radius: 99px 0 0 99px; }
+  .skin .sw i:last-child { border-radius: 0 99px 99px 0; }
+  .skin:hover .sw { border-color: var(--ink-soft); }
+  .skin[aria-checked="true"] { color: var(--ink); }
+  .skin[aria-checked="true"] .sw { border-color: var(--ink); box-shadow: 0 0 0 2px var(--ground), 0 0 0 4px var(--ink); }
+  h1 {
+    margin: 0; font-family: var(--display); font-weight: 400;
+    font-size: clamp(42px, 8vw, 64px); line-height: 1.05;
+    text-wrap: balance;
+  }
+  h1 span { color: var(--accent); }
+
+  .stage { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 28px; align-items: start; }
+  @media (max-width: 960px) { .stage { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; } }
+  @media (max-width: 680px) { .stage { grid-template-columns: 1fr; } }
+
+  .wheel-col { display: grid; justify-items: center; gap: 18px; }
+  .picker { width: 100%; display: grid; gap: 6px; }
+  label.lbl { font-size: 15px; color: var(--ink-soft); letter-spacing: .06em; }
+  select {
+    width: 100%; appearance: none; -webkit-appearance: none;
+    background: var(--panel) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%23999999' stroke-width='2' fill='none'/%3E%3C/svg%3E") no-repeat right 16px center;
+    color: var(--ink); border: 1px solid var(--line); border-radius: 14px;
+    font: 18px var(--body); padding: 14px 44px 14px 16px; cursor: pointer;
+  }
+  select:focus-visible, button:focus-visible, textarea:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .wheel-box { position: relative; width: min(100%, 500px); aspect-ratio: 1; max-width: 100%; }
+  .wheel-box canvas { width: 100%; height: 100%; display: block; }
+  .pointer {
+    position: absolute; top: -6px; left: 50%; transform: translateX(-50%);
+    width: 0; height: 0; border-left: 18px solid transparent; border-right: 18px solid transparent;
+    border-top: 34px solid var(--ink); filter: drop-shadow(0 3px 3px rgba(0,0,0,.25)); z-index: 2;
+  }
+  .hub {
+    position: absolute; inset: 0; margin: auto; width: 24%; height: 24%; border-radius: 50%;
+    background: var(--hub-bg); border: 4px solid var(--rim); color: var(--hub-ink);
+    font: 400 clamp(20px, 5vw, 28px) var(--display); cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0,0,0,.18); transition: transform .15s;
+    touch-action: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;
+  }
+  .hub:hover:not(:disabled) { transform: scale(1.05); }
+  .hub:disabled { cursor: default; opacity: .85; }
+
+  .charge {
+    position: absolute; inset: 0; margin: auto; width: 31%; height: 31%; border-radius: 50%;
+    background: conic-gradient(var(--accent-2) calc(var(--p, 0) * 360deg), transparent 0);
+    opacity: 0; transition: opacity .15s; pointer-events: none;
+  }
+  .charge.on { opacity: 1; }
+  .hold-hint { margin: -8px 0 0; font-size: 16px; color: var(--ink-soft); }
+  .hold-hint b { color: var(--accent); font-weight: 400; }
+
+  .segmented { display: flex; background: var(--field); border: 1px solid var(--line); border-radius: 999px; padding: 4px; gap: 4px; }
+  .segmented input { position: absolute; opacity: 0; pointer-events: none; }
+  .segmented label {
+    flex: 1; text-align: center; padding: 7px 6px; border-radius: 999px; cursor: pointer;
+    font-size: 17px; color: var(--ink-soft); white-space: nowrap;
+  }
+  .segmented input:checked + label { background: var(--accent); color: var(--on-accent); }
+  .segmented input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .remain { font-size: 16px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+
+  .card { background: var(--ground-2); border: 1px solid var(--line); border-radius: 18px; padding: 18px; display: grid; gap: 14px; }
+  .card h2 { margin: 0; font: 400 24px var(--display); letter-spacing: .01em; }
+  .card p.hint { margin: 0; font-size: 16px; color: var(--ink-soft); }
+  .panel-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+  .items { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; max-height: 380px; overflow-y: auto; }
+  .items li { display: grid; grid-template-columns: 12px minmax(0, 1fr) auto 38px 28px; align-items: center; gap: 6px; }
+  .items li.out { opacity: .45; }
+  .items .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .items input {
+    width: 100%; height: 38px; background: var(--field); color: var(--ink);
+    border: 1px solid var(--line); border-radius: 10px; font: 18px var(--body); padding: 0 10px;
+  }
+  .items input.w { width: 52px; text-align: center; padding: 0 4px; }
+  .items .pct { text-align: right; color: var(--accent); font-variant-numeric: tabular-nums; font-size: 16px; }
+  .items .del {
+    width: 28px; height: 28px; border-radius: 50%; border: 0; background: transparent;
+    color: var(--ink-soft); font-size: 18px; cursor: pointer;
+  }
+  .items .del:hover { background: var(--panel); color: var(--accent); }
+  .custom-title { display: grid; gap: 6px; }
+  #custom-title {
+    width: 100%; height: 46px; background: var(--field); color: var(--ink);
+    border: 2px solid var(--accent); border-radius: 12px; font: 22px var(--display); padding: 0 14px;
+  }
+  #custom-title::placeholder { color: var(--ink-soft); opacity: .7; }
+  .divider { height: 1px; background: var(--line); margin-block: 2px; }
+  .opt-grid { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 10px 12px; }
+  .toggles { display: flex; flex-wrap: wrap; gap: 10px 20px; }
+  .log { width: 100%; display: grid; gap: 8px; }
+  .log h3 { margin: 0; font: 400 19px var(--display); color: var(--ink-soft); }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .btn {
+    border: 1px solid var(--line); background: var(--panel); color: var(--ink);
+    font: 17px var(--body); padding: 9px 14px; border-radius: 999px; cursor: pointer;
+  }
+  .btn:hover { border-color: var(--accent); }
+  .btn.primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+  .toggle { display: flex; align-items: center; gap: 10px; font-size: 17px; cursor: pointer; user-select: none; }
+  .toggle input { width: 20px; height: 20px; accent-color: var(--accent); }
+
+  .people { display: flex; align-items: center; gap: 10px; }
+  .stepper { display: flex; align-items: center; gap: 6px; }
+  .btn.step { width: 36px; height: 36px; padding: 0; font-size: 20px; line-height: 1; }
+  #people-count {
+    width: 52px; height: 36px; text-align: center; font: 400 24px var(--display);
+    background: var(--field); color: var(--accent); border: 1px solid var(--line); border-radius: 10px;
+    font-variant-numeric: tabular-nums; -moz-appearance: textfield;
+  }
+  #people-count::-webkit-inner-spin-button, #people-count::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+
+  ol.history { margin: 0; padding-left: 22px; display: grid; gap: 4px; max-height: 220px; overflow-y: auto; }
+  ol.history li { font-size: 17px; }
+  ol.history li small { color: var(--ink-soft); margin-left: 6px; }
+  .empty { font-size: 16px; color: var(--ink-soft); margin: 0; }
+
+  .pairs { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+  .pairs li { display: flex; gap: 8px; align-items: center; font-size: 17px; }
+  .pairs li b { color: var(--accent); font-weight: 400; font-family: var(--display); }
+
+  /* Result overlay */
+  .overlay {
+    position: fixed; inset: 0; z-index: 20; display: grid; place-items: center;
+    background: var(--scrim); padding: 16px;
+  }
+  .result {
+    width: min(100%, 420px); background: var(--ground-2); color: var(--ink);
+    border-radius: 24px; padding: 30px 24px 22px; text-align: center; display: grid; gap: 14px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.25); animation: pop .35s cubic-bezier(.2,1.4,.4,1);
+  }
+  .result .tag { font-size: 16px; letter-spacing: .12em; color: var(--accent); }
+  .result .big { font: 400 clamp(26px, 7vw, 36px)/1.25 var(--display); text-wrap: balance; word-break: keep-all; }
+  .result .btn { background: var(--accent); color: var(--on-accent); border-color: var(--accent); justify-self: center; padding: 11px 26px; }
+  @keyframes pop { from { transform: scale(.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+  #confetti { position: fixed; inset: 0; pointer-events: none; z-index: 30; width: 100%; height: 100%; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .result { animation: none; }
+  }
+</style>
+</head>
+<body>
+<canvas id="confetti"></canvas>
+
+<div class="wrap">
+  <header>
+    <h1>두근두근 <span>룰렛</span></h1>
+  </header>
+
+  <section class="stage">
+    <div class="wheel-col">
+      <div class="picker">
+        <label class="lbl" for="theme">룰렛 고르기</label>
+        <select id="theme"></select>
+      </div>
+      <div class="wheel-box">
+        <div class="pointer" aria-hidden="true"></div>
+        <canvas id="wheel" aria-label="룰렛 판"></canvas>
+        <div class="charge" id="charge" aria-hidden="true"></div>
+        <button class="hub" id="spin" type="button">돌리기</button>
+      </div>
+      <div class="remain" id="remain"></div>
+      <p class="hold-hint">버튼을 <b>길게 누를수록</b> 더 세게, 더 오래 돌아요</p>
+      <div class="log">
+        <h3>지금까지 나온 결과</h3>
+        <ol class="history" id="history"></ol>
+        <p class="empty" id="history-empty">아직 돌리지 않았어요.</p>
+      </div>
+    </div>
+
+    <div class="card panel">
+      <div class="panel-head">
+        <h2 id="edit-title">항목</h2>
+        <div class="people" id="people" hidden>
+          <span class="lbl">인원</span>
+          <div class="stepper">
+            <button class="btn step" id="people-minus" type="button" aria-label="한 명 줄이기">−</button>
+            <input id="people-count" type="number" inputmode="numeric" min="2" max="30" value="6" aria-label="참가 인원">
+            <button class="btn step" id="people-plus" type="button" aria-label="한 명 늘리기">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="custom-title" id="custom-title-box" hidden>
+        <label class="lbl" for="custom-title">룰렛 제목</label>
+        <input id="custom-title" type="text" maxlength="20" placeholder="예: 노래방 1번 타자는?" autocomplete="off">
+      </div>
+
+      <div class="segmented" role="radiogroup" aria-label="칸 크기">
+        <input type="radio" name="size" id="size-even" value="even" checked><label for="size-even">균등한 칸</label>
+        <input type="radio" name="size" id="size-ratio" value="ratio"><label for="size-ratio">비율 정하기</label>
+      </div>
+      <p class="hint" id="edit-hint"></p>
+
+      <ul class="items" id="item-list"></ul>
+
+      <div class="row">
+        <button class="btn" id="add-item" type="button">+ 추가</button>
+        <button class="btn" id="weight-reset" type="button" hidden>비율 모두 1로</button>
+        <button class="btn" id="reset" type="button">기본 항목으로</button>
+        <button class="btn primary" id="manito-all" type="button" hidden>한 번에 전체 매칭</button>
+      </div>
+      <ul class="pairs" id="pairs" hidden></ul>
+
+      <div class="divider" role="separator"></div>
+
+      <div class="opt-grid">
+        <span class="lbl" id="lbl-split">나눠 섞기</span>
+        <div class="segmented" role="radiogroup" aria-labelledby="lbl-split">
+          <input type="radio" name="split" id="split-1" value="1" checked><label for="split-1">안 함</label>
+          <input type="radio" name="split" id="split-2" value="2"><label for="split-2">2칸씩</label>
+          <input type="radio" name="split" id="split-3" value="3"><label for="split-3">3칸씩</label>
+        </div>
+        <span class="lbl" id="lbl-speed">속도</span>
+        <div class="segmented" role="radiogroup" aria-labelledby="lbl-speed">
+          <input type="radio" name="speed" id="speed-slow" value="slow"><label for="speed-slow">천천히</label>
+          <input type="radio" name="speed" id="speed-normal" value="normal" checked><label for="speed-normal">보통</label>
+          <input type="radio" name="speed" id="speed-fast" value="fast"><label for="speed-fast">빠르게</label>
+        </div>
+      </div>
+
+      <div class="toggles">
+        <label class="toggle"><input type="checkbox" id="opt-remove"> 나온 항목 빼기</label>
+        <label class="toggle"><input type="checkbox" id="opt-sound" checked> 효과음</label>
+      </div>
+      <div class="row">
+        <button class="btn" id="reshuffle" type="button" hidden>칸 위치 다시 섞기</button>
+        <button class="btn" id="refill" type="button" hidden>뺀 항목 다시 채우기</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="skin-bar">
+    <span class="lbl" id="lbl-skin">색 테마</span>
+    <div class="skins" role="radiogroup" aria-labelledby="lbl-skin">
+      <button type="button" class="skin" data-skin="pop" role="radio" aria-checked="false"><span class="sw"><i style="background:#FFD24D"></i><i style="background:#FF6B5B"></i></span>레몬 & 코랄</button>
+      <button type="button" class="skin" data-skin="sky" role="radio" aria-checked="false"><span class="sw"><i style="background:#8FD0FF"></i><i style="background:#FFC933"></i></span>하늘 & 레몬</button>
+      <button type="button" class="skin" data-skin="xmas" role="radio" aria-checked="false"><span class="sw"><i style="background:#D7322E"></i><i style="background:#2E8B57"></i></span>크리스마스</button>
+      <button type="button" class="skin" data-skin="berry" role="radio" aria-checked="false"><span class="sw"><i style="background:#FFD1DC"></i><i style="background:#F0567F"></i></span>딸기우유</button>
+      <button type="button" class="skin" data-skin="mint" role="radio" aria-checked="false"><span class="sw"><i style="background:#7FE0BF"></i><i style="background:#7A4E3A"></i></span>민트초코</button>
+      <button type="button" class="skin" data-skin="tangerine" role="radio" aria-checked="false"><span class="sw"><i style="background:#FF9F43"></i><i style="background:#5DB85B"></i></span>귤</button>
+      <button type="button" class="skin" data-skin="night" role="radio" aria-checked="false"><span class="sw"><i style="background:#14213D"></i><i style="background:#FFC94D"></i></span>밤하늘</button>
+    </div>
+  </footer>
+</div>
+
+<div class="overlay" id="overlay" hidden>
+  <div class="result" role="dialog" aria-modal="true" aria-labelledby="result-text">
+    <div class="tag" id="result-tag">결과</div>
+    <div class="big" id="result-text"></div>
+    <button class="btn" id="close" type="button">확인</button>
+  </div>
+</div>
+
+<script>
+const THEMES = {
+  pay: {
+    name: "💸 정산 · 당번 정하기", label: "당첨",
+    items: ["민지", "준호", "서연", "태윤", "하은", "도현"],
+    people: true
+  },
+  mild: {
+    name: "🍻 벌칙·미션 (순한맛)", label: "미션",
+    items: ["옆 사람 칭찬 3개", "건배사 하기", "10초 애교", "다음 잔 모두에게 따라주기", "최근 사진첩 1장 공개", "성대모사 하나", "올해의 명언 남기기", "통과! 🎉", "왼쪽 사람과 셀카", "노래 한 소절"]
+  },
+  spicy: {
+    name: "🌶️ 벌칙·미션 (매운맛)", label: "미션",
+    items: ["올해 흑역사 썰 풀기", "카톡 최근 대화 1개 공개", "원샷!", "전 애인 얘기 30초", "단체 앞에서 춤 10초", "가장 최근 검색어 공개", "지목한 사람에게 고백 멘트", "벌칙 2배 (한 번 더 돌리기)", "프사 1시간 바꾸기", "통과… 는 없다"]
+  },
+  talk: {
+    name: "💬 올해 결산 토크", label: "토크 주제",
+    items: ["올해 가장 잘한 소비", "올해의 노래", "올해 제일 웃겼던 순간", "올해 나를 칭찬하고 싶은 점", "올해 가장 많이 한 말", "내년에 꼭 하고 싶은 것", "올해 가장 고마운 사람", "올해 새로 시작한 것", "다시 돌아가고 싶은 하루", "2027년 나에게 한마디"]
+  },
+  manito: {
+    name: "🎁 마니또 · 선물 교환", label: "선물 받을 사람",
+    items: ["민지", "준호", "서연", "태윤", "하은", "도현"],
+    forceRemove: true, people: true,
+    hint: "돌릴 때마다 선물 받을 사람이 정해지고 판에서 빠져요."
+  },
+  fortune: {
+    name: "🔮 2027 운세", label: "2027년 운세",
+    items: ["재물운 대박 💰", "연애운 상승 💘", "이직각 🚀", "다이어트 성공(?) 🥗", "여행운 가득 ✈️", "귀인을 만난다 🤝", "건강운 최고 💪", "로또 한 장 사보자 🍀", "승진운 📈", "무탈한 한 해 🌿"]
+  },
+  custom: {
+    name: "✏️ 직접 만들기", label: "결과",
+    items: ["항목 1", "항목 2", "항목 3", "항목 4"]
+  }
+};
+
+const SKINS = {
+  pop:  ["#FFD24D", "#FF8A7A", "#6FD3B0", "#7CC4FF", "#C9A7FF", "#FFA8C8", "#FFB35C", "#A8E06A", "#5ED1D9", "#FFE699"],
+  sky:  ["#8FD0FF", "#FFD84D", "#7FE0C0", "#FF9EBB", "#FFB066", "#B9A6FF", "#5FB8F0", "#C8EB7A", "#FFC4A3", "#A3E4F0"],
+  xmas: ["#D7322E", "#2E8B57", "#F2C14E", "#F7A8B8", "#7FD1B9", "#FFF1D6", "#B71C1C", "#5BAE7E", "#E8A33D", "#FBD3DC"],
+  berry: ["#FF8FB1", "#FFD1DC", "#F0567F", "#FFE3A3", "#C9B6FF", "#FFB3C7", "#FFF0F4", "#E87AA0", "#B5E3D8", "#FFC2A8"],
+  mint: ["#7FE0BF", "#7A4E3A", "#C7F1E0", "#A87A62", "#3BB98F", "#E8D5C4", "#5ACCA4", "#5B3A2C", "#B0EBD5", "#D9B89C"],
+  tangerine: ["#FF9F43", "#FFD08A", "#5DB85B", "#FFB870", "#FFE3B8", "#A6DB8C", "#FF8A1F", "#FFF0D6", "#7FC86B", "#FFC46B"],
+  night: ["#FFC94D", "#7FD3FF", "#FF8FA3", "#B79CFF", "#6EE7B7", "#FFE8A3", "#5AA9E6", "#F4A261", "#A0C4FF", "#FFD6E0"]
+};
+let COLORS = SKINS.pop;
+let skinCss = {};
+const STORE_KEY = "yearend-roulette-v1";
+const $ = id => document.getElementById(id);
+
+let saved = {};
+try { saved = JSON.parse(localStorage.getItem(STORE_KEY)) || {}; } catch (e) { saved = {}; }
+saved.lists = saved.lists || {};
+function persist() { try { localStorage.setItem(STORE_KEY, JSON.stringify(saved)); } catch (e) {} }
+
+let themeKey = THEMES[saved.theme] ? saved.theme : "pay";
+let allItems = [];      // full list for this theme
+let removed = new Set(); // indices into allItems removed this session
+let rotation = 0;
+let spinning = false;
+const history = [];
+
+// ---------- wheel ----------
+const wheel = $("wheel");
+const ctx = wheel.getContext("2d");
+let size = 0;
+
+function resizeWheel() {
+  const box = wheel.parentElement.getBoundingClientRect();
+  const dpr = window.devicePixelRatio || 1;
+  size = box.width;
+  wheel.width = size * dpr; wheel.height = size * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  draw();
+}
+
+function current() { return allItems.map((t, i) => ({ t, i })).filter(o => !removed.has(o.i)); }
+
+// ---------- segments: size by weight, optionally split & shuffled ----------
+const TAU = Math.PI * 2;
+let segs = [];   // { t, i, a0, a1 } — angles measured clockwise from the pointer
+function customTitle() { return (saved.customTitle || "").trim(); }
+// name shown in the dropdown / history / result card
+function themeTitle(key) {
+  if (key === "custom") return customTitle() || "직접 만들기";
+  return THEMES[key].name.replace(/^\S+\s/, "");
+}
+function optionText(key) {
+  return key === "custom" ? "✏️ " + themeTitle("custom") : THEMES[key].name;
+}
+const opt = name => document.querySelector(`input[name="${name}"]:checked`).value;
+function weightOf(t) {
+  if (opt("size") !== "ratio") return 1;
+  const w = ((saved.weights || {})[themeKey] || {})[t];
+  return w > 0 ? w : 1;
+}
+
+// shuffle a few times and keep the order with the fewest same-name neighbours
+function spreadShuffle(arr) {
+  let best = arr, bestScore = Infinity;
+  for (let k = 0; k < 80 && bestScore > 0; k++) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+    let score = 0;
+    for (let i = 0; i < a.length; i++) if (a[i].i === a[(i + 1) % a.length].i) score++;
+    if (score < bestScore) { best = a; bestScore = score; }
+  }
+  return best;
+}
+
+function buildSegs() {
+  const split = Number(opt("split"));
+  let pieces = [];
+  current().forEach(o => {
+    const w = weightOf(o.t) / split;
+    for (let k = 0; k < split; k++) pieces.push({ t: o.t, i: o.i, w });
+  });
+  if (split > 1 && pieces.length > 2) pieces = spreadShuffle(pieces);
+  const total = pieces.reduce((s, p) => s + p.w, 0) || 1;
+  let acc = 0;
+  segs = pieces.map(p => {
+    const a0 = acc / total * TAU; acc += p.w;
+    return { t: p.t, i: p.i, a0, a1: acc / total * TAU };
+  });
+}
+
+function segAt(rot) {
+  const a = ((-rot) % TAU + TAU) % TAU;
+  for (let k = 0; k < segs.length; k++) if (a < segs[k].a1) return k;
+  return segs.length - 1;
+}
+
+// same item → same colour, so split pieces are easy to spot
+function segColor(i) { return COLORS[i % COLORS.length]; }
+// dark wedges (e.g. 크리스마스 red/green) get white text
+function inkOn(hex) {
+  const n = parseInt(hex.slice(1), 16), r = n >> 16, g = (n >> 8) & 255, b = n & 255;
+  if ((0.299 * r + 0.587 * g + 0.114 * b) < 150) return "#FFFFFF";
+  return skinCss.dark ? "#14213D" : skinCss.ink; // light wedge on a dark skin still needs dark text
+}
+
+function fitText(text, maxW, fontPx) {
+  ctx.font = `${fontPx}px "Gamja Flower", "Apple SD Gothic Neo", sans-serif`;
+  if (ctx.measureText(text).width <= maxW) return text;
+  let s = text;
+  while (s.length > 1 && ctx.measureText(s + "…").width > maxW) s = s.slice(0, -1);
+  return s + "…";
+}
+
+function draw() {
+  if (size < 40) return; // not laid out yet
+  const c = size / 2, r = c - 8;
+  ctx.clearRect(0, 0, size, size);
+
+  // rim
+  ctx.beginPath(); ctx.arc(c, c, r + 6, 0, TAU);
+  ctx.fillStyle = skinCss.rim; ctx.fill();
+
+  if (segs.length === 0) {
+    ctx.beginPath(); ctx.arc(c, c, r, 0, TAU);
+    ctx.fillStyle = skinCss.panel; ctx.fill();
+    return;
+  }
+
+  ctx.save();
+  ctx.translate(c, c);
+  ctx.rotate(rotation);
+  segs.forEach(s => {
+    const a0 = -Math.PI / 2 + s.a0, a1 = -Math.PI / 2 + s.a1, span = s.a1 - s.a0;
+    ctx.beginPath(); ctx.moveTo(0, 0); ctx.arc(0, 0, r, a0, a1); ctx.closePath();
+    ctx.fillStyle = segColor(s.i); ctx.fill();
+    ctx.strokeStyle = skinCss.line; ctx.lineWidth = 2.5; ctx.stroke();
+
+    const fontPx = Math.min(22, size / 20, span * r * 0.6);
+    if (fontPx < 8) return; // slice too thin to label
+    ctx.save();
+    ctx.rotate(a0 + span / 2);
+    ctx.fillStyle = inkOn(segColor(s.i));
+    ctx.textAlign = "right"; ctx.textBaseline = "middle";
+    ctx.fillText(fitText(s.t, r * 0.62, Math.max(fontPx, 12)), r - 14, 0);
+    ctx.restore();
+  });
+  ctx.restore();
+
+  // studs on rim
+  for (let k = 0; k < 24; k++) {
+    const a = k * Math.PI / 12;
+    ctx.beginPath(); ctx.arc(c + Math.cos(a) * (r + 1), c + Math.sin(a) * (r + 1), 2.6, 0, TAU);
+    ctx.fillStyle = skinCss.stud; ctx.fill();
+  }
+}
+
+// ---------- sound ----------
+let audio = null;
+function tick(freq = 900, dur = 0.04, vol = 0.12) {
+  if (!$("opt-sound").checked) return;
+  try {
+    audio = audio || new (window.AudioContext || window.webkitAudioContext)();
+    const o = audio.createOscillator(), g = audio.createGain();
+    o.type = "triangle"; o.frequency.value = freq;
+    g.gain.setValueAtTime(vol, audio.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, audio.currentTime + dur);
+    o.connect(g).connect(audio.destination);
+    o.start(); o.stop(audio.currentTime + dur);
+  } catch (e) {}
+}
+function fanfare() {
+  [523, 659, 784, 1047].forEach((f, i) => setTimeout(() => tick(f, 0.22, 0.14), i * 110));
+}
+
+// ---------- spin ----------
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// dur = 힘차게 도는 구간, crawl = 마지막에 엉금엉금 멈추는 구간 (ms)
+const SPEEDS = {
+  slow:   { dur: 5500, crawl: 2600, spins: 4 },
+  normal: { dur: 3200, crawl: 1900, spins: 6 },
+  fast:   { dur: 1800, crawl: 1500, spins: 7 }
+};
+const CRAWL_SPEED = 1.6; // rad/s when the crawl starts (≈ 90°/s), then eases to 0
+
+// power: 0 (tap) … 1 (held ~2s) — more turns and a longer fast phase
+function spin(power = 0) {
+  if (spinning) return;
+  if (segs.length === 0) { showResult("항목이 없어요", "‘뺀 항목 다시 채우기’를 눌러 주세요"); return; }
+  spinning = true; $("spin").disabled = true;
+  try { audio && audio.resume && audio.resume(); } catch (e) {}
+
+  // Uniform random point on the wheel → each item wins in proportion to its slice size
+  const want = Math.random() * TAU;
+  const target = segs.findIndex(s => want < s.a1);
+  const hit = segs[target === -1 ? segs.length - 1 : target];
+
+  const sp = SPEEDS[opt("speed")];
+  const turns = reduceMotion ? 1 : Math.round(sp.spins * (1 + power * 1.5));
+  const baseNorm = ((rotation % TAU) + TAU) % TAU;
+  const finalNorm = (TAU - want) % TAU;
+  let delta = finalNorm - baseNorm; if (delta < 0) delta += TAU;
+  const start = rotation, total = delta + TAU * turns;
+
+  // Two phases with continuous speed:
+  //  1) fast spin slowing from v0 down to CRAWL_SPEED over T1
+  //  2) crawl from CRAWL_SPEED to a stop over T2 — the tense part
+  const T1 = (reduceMotion ? 500 : sp.dur * (1 + power * 0.6)) / 1000;
+  const T2 = (reduceMotion ? 400 : sp.crawl) / 1000;
+  const vc = reduceMotion ? 1 : CRAWL_SPEED;
+  const s2 = vc * T2 / 2;
+  const s1 = total - s2;
+  const v0 = vc + 3 * (s1 / T1 - vc);
+  const t0 = performance.now();
+  let lastIdx = segAt(rotation);
+
+  function pos(t) {
+    if (t < T1) {
+      const p = t / T1;
+      return T1 * (vc * p + (v0 - vc) * (1 - Math.pow(1 - p, 3)) / 3);
+    }
+    const q = Math.min(1, (t - T1) / T2);
+    return s1 + vc * T2 * (q - q * q / 2);
+  }
+
+  function frame(now) {
+    const t = (now - t0) / 1000;
+    rotation = start + pos(t);
+    const idx = segAt(rotation);
+    if (idx !== lastIdx) { tick(); lastIdx = idx; }
+    draw();
+    if (t < T1 + T2) requestAnimationFrame(frame);
+    else { rotation = start + total; draw(); finish(hit); }
+  }
+  requestAnimationFrame(frame);
+}
+
+function finish(hit) {
+  spinning = false; $("spin").disabled = false;
+  const theme = THEMES[themeKey];
+  history.unshift({ t: hit.t, theme: themeTitle(themeKey) });
+  renderHistory();
+  if (theme.forceRemove || $("opt-remove").checked) {
+    removed.add(hit.i);
+    rotation = 0;
+    refresh();
+  }
+  fanfare(); confetti();
+  showResult(hit.t, themeKey === "custom" && customTitle() ? customTitle() : theme.label);
+}
+
+function showResult(text, tag) {
+  $("result-tag").textContent = tag;
+  $("result-text").textContent = text;
+  $("overlay").hidden = false;
+  $("close").focus();
+}
+$("close").addEventListener("click", () => { $("overlay").hidden = true; $("spin").focus(); });
+$("overlay").addEventListener("click", e => { if (e.target.id === "overlay") $("overlay").hidden = true; });
+document.addEventListener("keydown", e => { if (e.key === "Escape") $("overlay").hidden = true; });
+
+// ---------- confetti ----------
+const cf = $("confetti"), cx = cf.getContext("2d");
+let parts = [], cfRunning = false;
+function confetti() {
+  if (reduceMotion) return;
+  const dpr = window.devicePixelRatio || 1;
+  cf.width = innerWidth * dpr; cf.height = innerHeight * dpr;
+  cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  for (let i = 0; i < 140; i++) {
+    parts.push({
+      x: innerWidth / 2, y: innerHeight * 0.42,
+      vx: (Math.random() - 0.5) * 14, vy: -Math.random() * 13 - 4,
+      w: 6 + Math.random() * 6, h: 8 + Math.random() * 8,
+      r: Math.random() * 6, vr: (Math.random() - 0.5) * 0.4,
+      c: COLORS[i % COLORS.length], life: 0
+    });
+  }
+  if (!cfRunning) { cfRunning = true; requestAnimationFrame(stepConfetti); }
+}
+function stepConfetti() {
+  cx.clearRect(0, 0, innerWidth, innerHeight);
+  parts.forEach(p => {
+    p.vy += 0.32; p.vx *= 0.99; p.x += p.vx; p.y += p.vy; p.r += p.vr; p.life++;
+    cx.save(); cx.translate(p.x, p.y); cx.rotate(p.r);
+    cx.fillStyle = p.c; cx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h * Math.abs(Math.cos(p.life / 6)));
+    cx.restore();
+  });
+  parts = parts.filter(p => p.y < innerHeight + 40 && p.life < 260);
+  if (parts.length) requestAnimationFrame(stepConfetti);
+  else { cfRunning = false; cx.clearRect(0, 0, innerWidth, innerHeight); }
+}
+
+// ---------- UI ----------
+function itemsFor(key) { return saved.lists[key] || THEMES[key].items; }
+
+function loadTheme(key) {
+  themeKey = key; saved.theme = key; persist();
+  const theme = THEMES[key];
+  allItems = itemsFor(key).slice();
+  removed.clear(); rotation = 0;
+  $("edit-title").textContent = theme.people ? "참가자" : "항목";
+  $("custom-title-box").hidden = key !== "custom";
+  $("custom-title").value = saved.customTitle || "";
+  $("reset").hidden = key === "custom" && !saved.lists.custom;
+  $("manito-all").hidden = key !== "manito";
+  $("people").hidden = !theme.people;
+  $("people-count").value = allItems.length;
+  $("pairs").hidden = true; $("pairs").innerHTML = "";
+  $("opt-remove").disabled = !!theme.forceRemove;
+  if (theme.forceRemove) $("opt-remove").checked = true;
+  refresh();
+}
+
+function updateRemain() {
+  const left = current().length;
+  $("refill").hidden = removed.size === 0;
+  $("remain").textContent = removed.size
+    ? `남은 칸 ${left} / ${allItems.length}`
+    : `총 ${allItems.length}칸`;
+}
+
+function renderHistory() {
+  $("history").innerHTML = "";
+  history.forEach(h => {
+    const li = document.createElement("li");
+    li.textContent = h.t;
+    const s = document.createElement("small"); s.textContent = h.theme;
+    li.appendChild(s);
+    $("history").appendChild(li);
+  });
+  $("history-empty").hidden = history.length > 0;
+}
+
+function hintText() {
+  const ratio = opt("size") === "ratio";
+  const base = THEMES[themeKey].hint ? THEMES[themeKey].hint + " " : "";
+  return base + (ratio
+    ? "숫자가 클수록 칸이 커지고 그만큼 잘 걸려요. (2는 1보다 두 배)"
+    : "이름을 누르면 바로 고칠 수 있어요. 고친 내용은 이 기기에 저장돼요.");
+}
+
+function saveList() { saved.lists[themeKey] = allItems.slice(); persist(); }
+function setWeight(name, v) {
+  saved.weights = saved.weights || {};
+  saved.weights[themeKey] = saved.weights[themeKey] || {};
+  saved.weights[themeKey][name] = v; persist();
+}
+
+// redraw wheel + panel after any change
+function refresh() {
+  if (!spinning) buildSegs();
+  draw(); updateRemain(); renderRows();
+}
+
+function renderRows() {
+  const ratio = opt("size") === "ratio";
+  $("edit-hint").textContent = hintText();
+  $("weight-reset").hidden = !ratio;
+  $("people-count").value = allItems.length;
+  const total = current().reduce((s, o) => s + weightOf(o.t), 0) || 1;
+  const ul = $("item-list");
+  const focusId = document.activeElement && document.activeElement.id;
+  ul.innerHTML = "";
+  allItems.forEach((t, i) => {
+    const out = removed.has(i);
+    const li = document.createElement("li");
+    if (out) li.className = "out";
+
+    const dot = document.createElement("span"); dot.className = "dot"; dot.style.background = segColor(i);
+
+    const nm = document.createElement("input");
+    nm.id = "n-" + i; nm.value = t; nm.maxLength = 30; nm.setAttribute("aria-label", (i + 1) + "번 이름");
+    nm.addEventListener("change", () => {
+      const v = nm.value.trim();
+      if (!v) { nm.value = allItems[i]; return; }
+      const old = allItems[i];
+      const w = ((saved.weights || {})[themeKey] || {})[old];
+      allItems[i] = v; saveList();
+      if (w) setWeight(v, w); // keep the ratio when renaming
+      refresh();
+    });
+
+    const w = document.createElement("input");
+    w.className = "w"; w.id = "w-" + i; w.type = "number"; w.min = "0.5"; w.max = "100"; w.step = "0.5";
+    w.inputMode = "decimal"; w.value = weightOf(t); w.hidden = !ratio;
+    w.setAttribute("aria-label", t + " 비율");
+    w.addEventListener("change", () => {
+      setWeight(allItems[i], Math.max(0.5, Math.min(100, Number(w.value) || 1)));
+      refresh();
+    });
+
+    const pct = document.createElement("span"); pct.className = "pct";
+    pct.textContent = out ? "빠짐" : Math.round(weightOf(t) / total * 100) + "%";
+
+    const del = document.createElement("button");
+    del.type = "button"; del.className = "del"; del.textContent = "×";
+    del.setAttribute("aria-label", t + " 삭제");
+    del.addEventListener("click", () => {
+      if (spinning) return;
+      if (allItems.length <= 2) { showResult("항목은 2개 이상 있어야 해요", "알림"); return; }
+      allItems.splice(i, 1); saveList();
+      removed = new Set([...removed].filter(k => k !== i).map(k => k > i ? k - 1 : k));
+      refresh();
+    });
+
+    li.append(dot, nm, w, pct, del);
+    ul.appendChild(li);
+  });
+  if (focusId && $(focusId)) $(focusId).focus();
+}
+
+$("add-item").addEventListener("click", () => {
+  if (spinning || allItems.length >= 30) return;
+  allItems.push(THEMES[themeKey].people ? `참가자 ${allItems.length + 1}` : `항목 ${allItems.length + 1}`);
+  saveList(); refresh();
+  const last = $("n-" + (allItems.length - 1));
+  if (last) { last.focus(); last.select(); }
+});
+$("reset").addEventListener("click", () => {
+  delete saved.lists[themeKey];
+  if (saved.weights) delete saved.weights[themeKey];
+  persist(); loadTheme(themeKey);
+});
+$("weight-reset").addEventListener("click", () => {
+  if (saved.weights) delete saved.weights[themeKey]; persist();
+  refresh();
+});
+
+// 인원 수: keeps names already typed, adds "참가자 N" or trims from the end
+function setPeople(n) {
+  if (spinning) return;
+  n = Math.max(2, Math.min(30, Math.round(Number(n)) || 2));
+  if (allItems.length > n) allItems = allItems.slice(0, n);
+  for (let i = allItems.length; i < n; i++) allItems.push(`참가자 ${i + 1}`);
+  removed = new Set([...removed].filter(k => k < n));
+  saveList(); refresh();
+}
+$("people-minus").addEventListener("click", () => setPeople(allItems.length - 1));
+$("people-plus").addEventListener("click", () => setPeople(allItems.length + 1));
+$("people-count").addEventListener("change", e => setPeople(e.target.value));
+
+$("refill").addEventListener("click", () => { if (!spinning) { removed.clear(); rotation = 0; refresh(); } });
+
+// ---------- option switches ----------
+saved.opts = saved.opts || {};
+["size", "split", "speed"].forEach(name => {
+  const v = saved.opts[name];
+  const el = v && document.querySelector(`input[name="${name}"][value="${v}"]`);
+  if (el) el.checked = true;
+  document.querySelectorAll(`input[name="${name}"]`).forEach(r => r.addEventListener("change", () => {
+    saved.opts[name] = opt(name); persist();
+    $("reshuffle").hidden = opt("split") === "1";
+    if (name !== "speed") refresh();
+  }));
+});
+$("reshuffle").hidden = opt("split") === "1";
+$("reshuffle").addEventListener("click", () => { if (!spinning) { buildSegs(); draw(); } });
+
+// ---------- hold to charge ----------
+const HOLD_MAX = 2000;
+let holdStart = 0, holdRaf = 0;
+function chargeLoop() {
+  const p = Math.min(1, (performance.now() - holdStart) / HOLD_MAX);
+  $("charge").style.setProperty("--p", p);
+  holdRaf = requestAnimationFrame(chargeLoop);
+}
+function holdEnd(fire) {
+  if (!holdStart) return;
+  cancelAnimationFrame(holdRaf);
+  const held = performance.now() - holdStart;
+  holdStart = 0;
+  $("charge").classList.remove("on");
+  $("charge").style.setProperty("--p", 0);
+  if (fire) spin(held < 250 ? 0 : Math.min(1, held / HOLD_MAX));
+}
+$("spin").addEventListener("pointerdown", e => {
+  if (spinning || e.button > 0) return;
+  e.preventDefault();
+  try { $("spin").setPointerCapture(e.pointerId); } catch (err) {}
+  holdStart = performance.now();
+  $("charge").classList.add("on");
+  chargeLoop();
+});
+$("spin").addEventListener("pointerup", () => holdEnd(true));
+$("spin").addEventListener("pointercancel", () => holdEnd(false));
+$("spin").addEventListener("contextmenu", e => e.preventDefault());
+// keyboard (Enter / Space) → normal spin
+$("spin").addEventListener("click", e => { if (e.detail === 0) spin(0); });
+$("theme").addEventListener("change", e => loadTheme(e.target.value));
+
+// 마니또: everyone gives to someone else, nobody draws themselves
+$("manito-all").addEventListener("click", () => {
+  const names = allItems.slice();
+  const idx = names.map((_, i) => i);
+  do {
+    for (let i = idx.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [idx[i], idx[j]] = [idx[j], idx[i]]; }
+  } while (idx.some((v, i) => v === i));
+  const order = idx.map(k => names[k]);
+  const ul = $("pairs"); ul.innerHTML = "";
+  names.forEach((giver, i) => {
+    const li = document.createElement("li");
+    const a = document.createElement("b"); a.textContent = giver;
+    const b = document.createElement("b"); b.textContent = order[i];
+    li.append(a, document.createTextNode(" → 🎁 → "), b);
+    ul.appendChild(li);
+  });
+  ul.hidden = false;
+  fanfare(); confetti();
+});
+
+Object.entries(THEMES).forEach(([k, t]) => {
+  const o = document.createElement("option"); o.value = k; o.textContent = optionText(k);
+  $("theme").appendChild(o);
+});
+$("theme").value = themeKey;
+
+$("custom-title").addEventListener("input", e => {
+  saved.customTitle = e.target.value; persist();
+  $("theme").querySelector('option[value="custom"]').textContent = optionText("custom");
+});
+
+function setSkin(name) {
+  if (!SKINS[name]) name = "pop";
+  if (name === "pop") document.documentElement.removeAttribute("data-skin");
+  else document.documentElement.setAttribute("data-skin", name);
+  const cs = getComputedStyle(document.documentElement);
+  const v = k => cs.getPropertyValue(k).trim();
+  skinCss = { rim: v("--rim"), panel: v("--panel"), line: v("--wedge-line"), stud: v("--stud"), ink: v("--ink"), dark: name === "night" };
+  COLORS = SKINS[name];
+  document.querySelectorAll(".skin").forEach(b => b.setAttribute("aria-checked", String(b.dataset.skin === name)));
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) meta.setAttribute("content", v("--ground")); // phone status bar follows the theme
+  saved.skin = name; persist();
+  if (allItems.length) { draw(); renderRows(); renderHistory(); }
+}
+document.querySelectorAll(".skin").forEach(b => b.addEventListener("click", () => setSkin(b.dataset.skin)));
+setSkin(saved.skin);
+loadTheme(themeKey);
+renderHistory();
+
+window.addEventListener("resize", resizeWheel);
+resizeWheel();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
+</script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+}
+</script>
+</body>
+</html>
