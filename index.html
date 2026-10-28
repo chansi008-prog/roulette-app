@@ -11,8 +11,8 @@
 <meta name="apple-mobile-web-app-title" content="두근두근 룰렛">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
-<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192-v2.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon-v2.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap">
@@ -446,6 +446,10 @@
 
 <script>
 const THEMES = {
+  custom: {
+    name: "✏️ 직접 만들기", label: "결과",
+    items: ["항목 1", "항목 2", "항목 3", "항목 4"]
+  },
   pay: {
     name: "💸 정산 · 당번 정하기", label: "당첨",
     items: ["민지", "준호", "서연", "태윤", "하은", "도현"],
@@ -472,10 +476,6 @@ const THEMES = {
   fortune: {
     name: "🔮 2027 운세", label: "2027년 운세",
     items: ["재물운 대박 💰", "연애운 상승 💘", "이직각 🚀", "다이어트 성공(?) 🥗", "여행운 가득 ✈️", "귀인을 만난다 🤝", "건강운 최고 💪", "로또 한 장 사보자 🍀", "승진운 📈", "무탈한 한 해 🌿"]
-  },
-  custom: {
-    name: "✏️ 직접 만들기", label: "결과",
-    items: ["항목 1", "항목 2", "항목 3", "항목 4"]
   }
 };
 
@@ -498,7 +498,7 @@ try { saved = JSON.parse(localStorage.getItem(STORE_KEY)) || {}; } catch (e) { s
 saved.lists = saved.lists || {};
 function persist() { try { localStorage.setItem(STORE_KEY, JSON.stringify(saved)); } catch (e) {} }
 
-let themeKey = THEMES[saved.theme] ? saved.theme : "pay";
+let themeKey = THEMES[saved.theme] ? saved.theme : "custom";
 let allItems = [];      // full list for this theme
 let removed = new Set(); // indices into allItems removed this session
 let rotation = 0;

@@ -1,6 +1,6 @@
 // 두근두근 룰렛 서비스 워커: 앱 파일을 저장해 두어 인터넷이 약한 모임 장소에서도 열리게 한다
-const VERSION = "roulette-v1";
-const CORE = ["./", "index.html", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon.png"];
+const VERSION = "roulette-v2";
+const CORE = ["./", "index.html", "manifest.webmanifest", "icons/icon-192-v2.png", "icons/icon-512-v2.png", "icons/apple-touch-icon-v2.png"];
 
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(CORE.map(u => new Request(u, { cache: "reload" })))).then(() => self.skipWaiting()));
